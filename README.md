@@ -64,7 +64,7 @@ Stop Time	2023-05-06T00:43:20.3152315Z
 
 ## Conclusion
 
-We were able to achieve an secure score on **84%** for Microsoft Defender.
+We were able to achieve an secure score on **84%** for Microsoft Defender for Cloud.
 
 Key Implementations
 - Private Endpoints for Resource Level. i.e blobs in storage account, key vault
