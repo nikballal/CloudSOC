@@ -3,11 +3,9 @@
 
 ## Introduction
 
-In this project, a honeynet is created to simulate attacks on endpoints and measure key security metrics. 
+In this project, a honeynet is created to simulate attacks on endpoints and measure key security metrics in the insecure environment for 24 hours, apply some security controls to harden the environment, measure metrics for another 24 hours, then show the results below.. 
 
 2 sentinel watchlists are created with geo ipv4 data and using the logs forwarded to log analytics workspace from various endpoints, we build attack maps, trigger alerts, and create incidents. 
-
-I measured some security metrics in the insecure environment for 24 hours, apply some security controls to harden the environment, measure metrics for another 24 hours, then show the results below. The metrics we will show ar
 
 The architecture of the mini honeynet in Azure consists of the following components:
 
