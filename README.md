@@ -3,7 +3,9 @@
 
 ## Introduction
 
-In this project, 2 sentinel watchlists are created with geo ipv4 data and using the logs forwarded to log analytics workspace from various endpoints, we build attack maps, trigger alerts, and create incidents. 
+In this project, a honeynet is created to simulate attacks on endpoints and measure key security metrics upon remediation using NIST-800 framework. 
+
+2 sentinel watchlists are created with geo ipv4 data and using the logs forwarded to log analytics workspace from various endpoints, we build attack maps, trigger alerts, and create incidents. 
 
 I measured some security metrics in the insecure environment for 24 hours, apply some security controls to harden the environment, measure metrics for another 24 hours, then show the results below. The metrics we will show ar
 
@@ -62,6 +64,13 @@ Stop Time	2023-05-06T00:43:20.3152315Z
 
 ## Conclusion
 
-In this project, a mini honeynet was constructed in Microsoft Azure and log sources were integrated into a Log Analytics workspace. Microsoft Sentinel was employed to trigger alerts and create incidents based on the ingested logs. Additionally, metrics were measured in the insecure environment before security controls were applied, and then again after implementing security measures. It is noteworthy that the number of security events and incidents were drastially reduced after the security controls were applied, demonstrating their effectiveness.
+We were able to achieve an secure score on **84%** for Microsoft Defender.
+
+Key Implementations
+- Private Endpoints for Resource Level. i.e blobs in storage account, key vault
+- NSG hardening. Endpoint protection by moving public endpoints to private.
+- Enabling MFA
+- Configuring Azure Firewall
+- Enable DDOS protection on Azure Virtual Network
 
 It is worth noting that if the resources within the network were heavily utilized by regular users, it is likely that more security events and alerts may have been generated within the 24-hour period following the implementation of the security controls.
