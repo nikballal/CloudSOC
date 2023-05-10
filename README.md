@@ -5,19 +5,72 @@
 
 In this project, I build a mini honeynet in Azure and ingest log sources from various resources into a Log Analytics workspace, which is then used by Microsoft Sentinel to build attack maps, trigger alerts, and create incidents. I measured some security metrics in the insecure environment for 24 hours, apply some security controls to harden the environment, measure metrics for another 24 hours, then show the results below. The metrics we will show ar
 
-# Preface
+## Contents
 
-APT29 operations have been separated into two scenarios, with steps and granular procedures contained within each. Within each scenario, operations have been broken into specific objectives, which are presented linearly as each enables subsequent objectives. That said, each organization can tailor this emulation to their individual use case, priorities, and available resources.  The assessing team can begin at any scenario or objective but should do so understanding that each objective enables succeeding objectives.
+* [Step 12 - Before Hardening](#step-12---before-hardening)
+* [Step 13 - Local Enumeration](#step-13---local-enumeration)
+* [Step 14 - Elevation](#step-14---elevation)
+* [Step 15 - Establish Persistence](#step-15---establish-persistence)
+* [Step 16 - Lateral Movement](#step-16---lateral-movement
+
+The architecture of the mini honeynet in Azure consists of the following components:
+
+- Virtual Network (VNet)
+- Network Security Group (NSG)
+- Virtual Machines (2 windows, 1 linux)
+- Log Analytics Workspace
+- Azure Key Vault
+- Azure Storage Account
+- Microsoft Sentinel
+
+For the "BEFORE" metrics, all resources were originally deployed, exposed to the internet. The Virtual Machines had both their Network Security Groups and built-in firewalls wide open, and all other resources are deployed with public endpoints visible to the Internet
+
+For the "AFTER" metrics, Network Security Groups were hardened by blocking ALL traffic with the exception of my admin workstation, and all other resources were protected by their built-in firewalls as well as Private Endpoint
+
+## Attack Maps Before Hardening / Security Controls
+![NSG Allowed Inbound Malicious Flows](https://i.imgur.com/1qvswSX.png)<br>
+![Linux Syslog Auth Failures](https://i.imgur.com/G1YgZt6.png)<br>
+![Windows RDP/SMB Auth Failures](https://i.imgur.com/ESr9Dlv.png)<br>
+
+## Metrics Before Hardening / Security Controls
+
+The following table shows the metrics we measured in our insecure environment for 24 hours:
+Start Time 2023-05-03T05:45:59.0834638Z
+Stop Time 2023-05-04T05:45:59.0834638Z
+
+| Metric                   | Count
+| ------------------------ | -----
+| SecurityEvent            | 2973
+| Syslog                   | 40
+| SecurityAlert            | 1
+| SecurityIncident         | 104
+| AzureNetworkAnalytics_CL | 137
+
+## Attack Maps Before Hardening / Security Controls
+
+```All map queries actually returned no results due to no instances of malicious activity for the 24 hour period after hardening.```
+
+## Metrics After Hardening / Security Controls
+
+The following table shows the metrics we measured in our environment for another 24 hours, but after we have applied security controls:
+Start Time 2023-05-05T00:43:20.3152315Z
+Stop Time	2023-05-06T00:43:20.3152315Z
+
+| Metric                   | Count
+| ------------------------ | -----
+| SecurityEvent            | 1173
+| Syslog                   | 0
+| SecurityAlert            | 0
+| SecurityIncident         | 0
+| AzureNetworkAnalytics_CL | 0
+
+## Conclusion
+
+In this project, a mini honeynet was constructed in Microsoft Azure and log sources were integrated into a Log Analytics workspace. Microsoft Sentinel was employed to trigger alerts and create incidents based on the ingested logs. Additionally, metrics were measured in the insecure environment before security controls were applied, and then again after implementing security measures. It is noteworthy that the number of security events and incidents were drastially reduced after the security controls were applied, demonstrating their effectiveness.
+
+It is worth noting that if the resources within the network were heavily utilized by regular users, it is likely that more security events and alerts may have been generated within the 24-hour period following the implementation of the security controls.
 
 ---
-
-# Scenario 2 Overview
-
-* Emulation of APT29 usage of tools such as PowerDuke, POSHSPY, CloudDuke, as well as more recent (2016+) TTPs
-* Scenario begins with a target spearphishing leading into a low and slow, methodical approach to owning the initial target and eventually the entire domain
-* Includes establishing persistence, credential gathering, local and remote enumeration, and data exfil
-* Modular components (ex: PowerShell scripts) may be executed atomically
-
 ## Contents
 
 * [Step 11 - Initial Breach](#step-11---initial-breach)
@@ -64,7 +117,7 @@ Note: The anti-analysis commands and logic were derived from a VirusTotal submis
 
 ---
 
-## Step 12 - Fortify Access
+## Step 1 - Before Hardening
 
 The attacker modifies the time attributes of the DLL payload ([T1099](https://attack.mitre.org/versions/v6/techniques/T1099/) / [T1070.006](https://attack.mitre.org/techniques/T1070/006/)) used in the previously established persistence mechanism to match that of a random file found in the victim’s System32 directory ([T1083](https://attack.mitre.org/techniques/T1083/)). The attacker then enumerates registered AV products ([T1063](https://attack.mitre.org/versions/v6/techniques/T1063/) / [T1518.001](https://attack.mitre.org/techniques/T1518/001/)) and software installed by the user documented in the Windows Registry ([T1012](https://attack.mitre.org/techniques/T1012/)).
 
@@ -372,66 +425,5 @@ The original victim is rebooted and the legitimate user logs in, emulating ordin
 - [Issues](https://github.com/center-for-threat-informed-defense/adversary_emulation_library/issues)
 - [Change Log](/apt29/CHANGE_LOG.md)
 
-## Architecture Before Hardening / Security Controls
-![Architecture Diagram](https://i.imgur.com/aBDwnKb.jpg)
 
-## Architecture After Hardening / Security Controls
-![Architecture Diagram](https://i.imgur.com/YQNa9Pp.jpg)
-
-The architecture of the mini honeynet in Azure consists of the following components:
-
-- Virtual Network (VNet)
-- Network Security Group (NSG)
-- Virtual Machines (2 windows, 1 linux)
-- Log Analytics Workspace
-- Azure Key Vault
-- Azure Storage Account
-- Microsoft Sentinel
-
-For the "BEFORE" metrics, all resources were originally deployed, exposed to the internet. The Virtual Machines had both their Network Security Groups and built-in firewalls wide open, and all other resources are deployed with public endpoints visible to the Internet
-
-For the "AFTER" metrics, Network Security Groups were hardened by blocking ALL traffic with the exception of my admin workstation, and all other resources were protected by their built-in firewalls as well as Private Endpoint
-
-## Attack Maps Before Hardening / Security Controls
-![NSG Allowed Inbound Malicious Flows](https://i.imgur.com/1qvswSX.png)<br>
-![Linux Syslog Auth Failures](https://i.imgur.com/G1YgZt6.png)<br>
-![Windows RDP/SMB Auth Failures](https://i.imgur.com/ESr9Dlv.png)<br>
-
-## Metrics Before Hardening / Security Controls
-
-The following table shows the metrics we measured in our insecure environment for 24 hours:
-Start Time 2023-05-03T05:45:59.0834638Z
-Stop Time 2023-05-04T05:45:59.0834638Z
-
-| Metric                   | Count
-| ------------------------ | -----
-| SecurityEvent            | 2973
-| Syslog                   | 40
-| SecurityAlert            | 1
-| SecurityIncident         | 104
-| AzureNetworkAnalytics_CL | 137
-
-## Attack Maps Before Hardening / Security Controls
-
-```All map queries actually returned no results due to no instances of malicious activity for the 24 hour period after hardening.```
-
-## Metrics After Hardening / Security Controls
-
-The following table shows the metrics we measured in our environment for another 24 hours, but after we have applied security controls:
-Start Time 2023-05-05T00:43:20.3152315Z
-Stop Time	2023-05-06T00:43:20.3152315Z
-
-| Metric                   | Count
-| ------------------------ | -----
-| SecurityEvent            | 1173
-| Syslog                   | 0
-| SecurityAlert            | 0
-| SecurityIncident         | 0
-| AzureNetworkAnalytics_CL | 0
-
-## Conclusion
-
-In this project, a mini honeynet was constructed in Microsoft Azure and log sources were integrated into a Log Analytics workspace. Microsoft Sentinel was employed to trigger alerts and create incidents based on the ingested logs. Additionally, metrics were measured in the insecure environment before security controls were applied, and then again after implementing security measures. It is noteworthy that the number of security events and incidents were drastially reduced after the security controls were applied, demonstrating their effectiveness.
-
-It is worth noting that if the resources within the network were heavily utilized by regular users, it is likely that more security events and alerts may have been generated within the 24-hour period following the implementation of the security controls.
 
