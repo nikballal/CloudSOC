@@ -68,6 +68,5 @@ Key Implementations
 - Private Endpoints for Resource Level. i.e blobs in storage account, key vault
 - NSG hardening. Endpoint protection by moving public endpoints to private.
 - Enabling MFA
-- Configuring Azure Firewall
 
 It is worth noting that if the resources within the network were heavily utilized by regular users, it is likely that more security events and alerts may have been generated within the 24-hour period following the implementation of the security controls.
