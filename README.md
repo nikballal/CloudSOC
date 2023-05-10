@@ -3,7 +3,7 @@
 
 ## Introduction
 
-In this project, a honeynet is created to simulate attacks on endpoints and measure key security metrics upon remediation using NIST-800 framework. 
+In this project, a honeynet is created to simulate attacks on endpoints and measure key security metrics. 
 
 2 sentinel watchlists are created with geo ipv4 data and using the logs forwarded to log analytics workspace from various endpoints, we build attack maps, trigger alerts, and create incidents. 
 
