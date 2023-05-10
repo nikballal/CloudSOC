@@ -60,6 +60,12 @@ Stop Time	2023-05-06T00:43:20.3152315Z
 | SecurityIncident         | 0
 | AzureNetworkAnalytics_CL | 0
 
+## Analytics and Incident Dashboard. 
+
+<a href="https://ibb.co/31y5DLx"><img src="https://i.ibb.co/9n9mFCx/incidents.png" alt="incidents" border="0"></a> <br>
+
+<a href="https://ibb.co/BPHrKsH"><img src="https://i.ibb.co/thwxPCw/analytics.png" alt="analytics" border="0"></a>
+
 ## Conclusion
 
 We were able to achieve an secure score on **84%** for Microsoft Defender for Cloud.
