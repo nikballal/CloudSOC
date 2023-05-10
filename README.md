@@ -66,7 +66,9 @@ We were able to achieve an secure score on **84%** for Microsoft Defender for Cl
 
 Key Implementations
 - Private Endpoints for Resource Level. i.e blobs in storage account, key vault
+<a href="https://ibb.co/NxcW0Dm"><img src="https://i.ibb.co/dB8kNCL/key-vault.png" alt="key-vault" border="0"></a>
+
 - NSG hardening. Endpoint protection by moving public endpoints to private.
-- Enabling MFA
+ <a href="https://ibb.co/jypggC6"><img src="https://i.ibb.co/By1qqhz/nsg-attached-to-private-subnet-10-0-0-4.png" alt="nsg-attached-to-private-subnet-10-0-0-4" border="0"></a>
 
 It is worth noting that if the resources within the network were heavily utilized by regular users, it is likely that more security events and alerts may have been generated within the 24-hour period following the implementation of the security controls.
