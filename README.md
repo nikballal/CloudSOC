@@ -3,15 +3,9 @@
 
 ## Introduction
 
-In this project, I build a mini honeynet in Azure and ingest log sources from various resources into a Log Analytics workspace, which is then used by Microsoft Sentinel to build attack maps, trigger alerts, and create incidents. I measured some security metrics in the insecure environment for 24 hours, apply some security controls to harden the environment, measure metrics for another 24 hours, then show the results below. The metrics we will show ar
+In this project, 2 sentinel watchlists are created with geo ipv4 data and using the logs forwarded to log analytics workspace from various sources, we build attack maps, trigger alerts, and create incidents. 
 
-## Contents
-
-* [Step 12 - Before Hardening](#step-12---before-hardening)
-* [Step 13 - Local Enumeration](#step-13---local-enumeration)
-* [Step 14 - Elevation](#step-14---elevation)
-* [Step 15 - Establish Persistence](#step-15---establish-persistence)
-* [Step 16 - Lateral Movement](#step-16---lateral-movement
+I measured some security metrics in the insecure environment for 24 hours, apply some security controls to harden the environment, measure metrics for another 24 hours, then show the results below. The metrics we will show ar
 
 The architecture of the mini honeynet in Azure consists of the following components:
 
@@ -23,12 +17,12 @@ The architecture of the mini honeynet in Azure consists of the following compone
 - Azure Storage Account
 - Microsoft Sentinel
 
-For the "BEFORE" metrics, all resources were originally deployed, exposed to the internet. The Virtual Machines had both their Network Security Groups and built-in firewalls wide open, and all other resources are deployed with public endpoints visible to the Internet
+For the "BEFORE" metrics, all resources were originally deployed, exposed to the internet. The Virtual Machines had both their Network Security Groups and built-in firewalls wide open, and all other resources are deployed with **public endpoints** visible to the Internet
 
 For the "AFTER" metrics, Network Security Groups were hardened by blocking ALL traffic with the exception of my admin workstation, and all other resources were protected by their built-in firewalls as well as Private Endpoint
 
-## Attack Maps Before Hardening / Security Controls
-![NSG Allowed Inbound Malicious Flows](https://i.imgur.com/1qvswSX.png)<br>
+## Attack Maps Before Hardening / Security Controls 
+![NSG Allowed Inbound Malicious Flows](https://ibb.co/5rpZZVy)<br>
 ![Linux Syslog Auth Failures](https://i.imgur.com/G1YgZt6.png)<br>
 ![Windows RDP/SMB Auth Failures](https://i.imgur.com/ESr9Dlv.png)<br>
 
