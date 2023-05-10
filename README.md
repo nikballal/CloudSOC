@@ -3,7 +3,7 @@
 
 ## Introduction
 
-In this project, 2 sentinel watchlists are created with geo ipv4 data and using the logs forwarded to log analytics workspace from various sources, we build attack maps, trigger alerts, and create incidents. 
+In this project, 2 sentinel watchlists are created with geo ipv4 data and using the logs forwarded to log analytics workspace from various endpoints, we build attack maps, trigger alerts, and create incidents. 
 
 I measured some security metrics in the insecure environment for 24 hours, apply some security controls to harden the environment, measure metrics for another 24 hours, then show the results below. The metrics we will show ar
 
