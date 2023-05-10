@@ -13,7 +13,7 @@ In this project, a honeynet is created to simulate attacks on endpoints and meas
 
 2 sentinel watchlists are created with geo ipv4 data and using the logs forwarded to log analytics workspace from various endpoints, we build attack maps, trigger alerts, and create incidents. 
 
-The architecture of the mini honeynet in Azure consists of the following components:
+The architecture of the mini honeynet in Azure consists of the following components **as shown in the above diagram**:
 
 - Virtual Network (VNet)
 - Network Security Group (NSG)
