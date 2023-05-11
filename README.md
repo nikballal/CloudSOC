@@ -76,7 +76,7 @@ Stop Time	2023-05-06T00:43:20.3152315Z
 
 We were able to achieve an secure score on **86%** for Microsoft Defender for Cloud. <br>
 
-<a href="https://ibb.co/CmQTXrx"><img src="https://i.ibb.co/sbqMDBL/mdc-score.png" alt="mdc-score" border="0"></a><br /><a target='_blank' href='https://geojsonlint.com/'>geojson format</a><br />
+<a href="https://ibb.co/CmQTXrx"><img src="https://i.ibb.co/sbqMDBL/mdc-score.png" alt="mdc-score" border="0"></a><br />
 
 Key Implementations
 
