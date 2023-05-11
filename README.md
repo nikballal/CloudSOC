@@ -74,9 +74,12 @@ Stop Time	2023-05-06T00:43:20.3152315Z
 
 ## Conclusion
 
-We were able to achieve an secure score on **84%** for Microsoft Defender for Cloud.
+We were able to achieve an secure score on **86%** for Microsoft Defender for Cloud. <br>
+
+<a href="https://ibb.co/CmQTXrx"><img src="https://i.ibb.co/sbqMDBL/mdc-score.png" alt="mdc-score" border="0"></a><br /><a target='_blank' href='https://geojsonlint.com/'>geojson format</a><br />
 
 Key Implementations
+
 - Private Endpoints for Resource Level. i.e blobs in storage account, key vault
 <a href="https://ibb.co/NxcW0Dm"><img src="https://i.ibb.co/dB8kNCL/key-vault.png" alt="key-vault" border="0"></a>
 
