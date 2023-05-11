@@ -27,7 +27,12 @@ For the "BEFORE" metrics, all resources were originally deployed, exposed to the
 
 For the "AFTER" metrics, Network Security Groups were hardened by blocking ALL traffic with the exception of my admin workstation, and all other resources were protected by their built-in firewalls as well as **private endpoint (subnet)**
 
-## Attack Maps Before Hardening / Security Controls 
+<details>
+ 
+<summary>
+ <h2> Attack Maps Before Hardening / Security Controls </h2>
+</summary>
+ 
 <a href="https://ibb.co/5rpZZVy"><img src="https://i.ibb.co/X70HHTg/nsg-malicious-allowed-in-BEFORE.png" alt="nsg-malicious-allowed-in-BEFORE" border="0"></a> <br>
 <a href="https://ibb.co/870Cw7s"><img src="https://i.ibb.co/gR328R9/syslog-ssh-auth-fail-before.png" alt="syslog-ssh-auth-fail-before" border="0"></a><br>
 <a href="https://ibb.co/wwHKQLm"><img src="https://i.ibb.co/LJwCgP7/windows-rdp-smb-auth-fail-before.png" alt="windows-rdp-smb-auth-fail-before" border="0"></a><br>
@@ -46,7 +51,12 @@ Stop Time 2023-05-04T05:45:59.0834638Z
 | SecurityIncident         | 104
 | AzureNetworkAnalytics_CL | 137
 
-## Attack Maps After Hardening / Security Controls
+</details>
+
+<details>
+<summary>
+ <h2> Attack Maps After Hardening / Security Controls </h2>
+</summary>
 
 ```All map queries actually returned no results due to no instances of malicious activity for the 24 hour period after hardening.``` <br>
 
@@ -66,25 +76,24 @@ Stop Time	2023-05-06T00:43:20.3152315Z
 | SecurityIncident         | 0
 | AzureNetworkAnalytics_CL | 0
 
-## Analytics and Incident Dashboard. 
+</details>
+
+<details>
+<summary>
+ <h2> Analytics and Incident Dashboard </h2>
+</summary>
 
 <a href="https://ibb.co/31y5DLx"><img src="https://i.ibb.co/9n9mFCx/incidents.png" alt="incidents" border="0"></a> <br>
 
 <a href="https://ibb.co/BPHrKsH"><img src="https://i.ibb.co/thwxPCw/analytics.png" alt="analytics" border="0"></a>
 
+</details>
+ 
 ## Conclusion
 
 We were able to achieve an secure score on **86%** for Microsoft Defender for Cloud. <br>
 
 <a href="https://ibb.co/CmQTXrx"><img src="https://i.ibb.co/sbqMDBL/mdc-score.png" alt="mdc-score" border="0"></a><br />
-
-Key Implementations
-
-- Private Endpoints for Resource Level. i.e blobs in storage account, key vault
-<a href="https://ibb.co/NxcW0Dm"><img src="https://i.ibb.co/dB8kNCL/key-vault.png" alt="key-vault" border="0"></a>
-
-- NSG hardening. Endpoint protection by moving public endpoints to private.
- <a href="https://ibb.co/jypggC6"><img src="https://i.ibb.co/By1qqhz/nsg-attached-to-private-subnet-10-0-0-4.png" alt="nsg-attached-to-private-subnet-10-0-0-4" border="0"></a>
 
 It is worth noting that if the resources within the network were heavily utilized by regular users, it is likely that more security events and alerts may have been generated within the 24-hour period following the implementation of the security controls.
 
